@@ -27,7 +27,7 @@ public class ClientController {
     }
 
     // Danışan kaydetme
-    @PostMapping("/create1")
+    @PostMapping("/create")
     public ResponseEntity<Client> createClient(@RequestBody Client client) {
         Client savedClient = clientService.saveClient(client);
         return ResponseEntity.ok(savedClient);
