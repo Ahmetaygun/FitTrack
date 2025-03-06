@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
-@RequestMapping("/api/diet-types")
+@RequestMapping("/api/diet-type")
 public class DietTypeController {
 
     private final DietTypeService dietTypeService;
@@ -17,28 +20,32 @@ public class DietTypeController {
         this.dietTypeService = dietTypeService;
     }
 
-    // Diyet tipi oluşturma
+    // Yeni diyet tipi oluşturma
     @PostMapping
-    public ResponseEntity<DietType> createDietType(@RequestBody DietType dietType) {
-        DietType createdDietType = dietTypeService.addDietType(dietType);
-        return ResponseEntity.ok(createdDietType);
+    public ResponseEntity<Void> createDietType(@RequestBody DietType dietType) {
+        dietTypeService.saveDietType(dietType);
+        return ResponseEntity.ok().build();
     }
 
-    // Diyet tipi adı ile arama
-    @GetMapping("/name/{name}")
-    public ResponseEntity<DietType> getDietTypeByName(@PathVariable String name) {
-        DietType dietType = dietTypeService.getDietTypeByName(name);
-        if (dietType != null) {
-            return ResponseEntity.ok(dietType);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    // Tüm diyet tiplerini getirme
+    @GetMapping
+    public ResponseEntity<List<DietType>> getAllDietTypes() {
+        List<DietType> dietTypes = dietTypeService.getAllDietTypes();
+        return ResponseEntity.ok(dietTypes);
     }
 
-    // Diyet tipi güncelleme
-    @PutMapping("/{id}")
-    public ResponseEntity<DietType> updateDietType(@PathVariable Long id, @RequestBody DietType updatedDietType) {
-        DietType dietType = dietTypeService.updateDietType(id, updatedDietType);
-        return ResponseEntity.ok(dietType);
+    // ID ile diyet tipi getirme
+    @GetMapping("/{id}")
+    public ResponseEntity<DietType> getDietTypeById(@PathVariable Long id) {
+        Optional<DietType> dietType = dietTypeService.getDietTypeById(id);
+        return dietType.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // Diyet tipi silme
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteDietType(@PathVariable Long id) {
+        dietTypeService.deleteDietType(id);
+        return ResponseEntity.ok().build();
     }
 }

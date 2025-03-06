@@ -5,6 +5,9 @@ import org.example.repository.DietTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class DietTypeService {
 
@@ -15,19 +18,23 @@ public class DietTypeService {
         this.dietTypeRepository = dietTypeRepository;
     }
 
-    // Diyet tipi adı ile diyet tipi getirme
-    public DietType getDietTypeByName(String name) {
-        return dietTypeRepository.findByName(name);
+    // Diyet tipi kaydetme
+    public void saveDietType(DietType dietType) {
+        dietTypeRepository.save(dietType);
     }
 
-    // Diyet tipi ekleme
-    public DietType addDietType(DietType dietType) {
-        return dietTypeRepository.save(dietType);
+    // Tüm diyet tiplerini getirme
+    public List<DietType> getAllDietTypes() {
+        return dietTypeRepository.findAll();
     }
 
-    // Diyet tipi güncelleme
-    public DietType updateDietType(Long id, DietType updatedDietType) {
-        updatedDietType.setId(id);
-        return dietTypeRepository.save(updatedDietType);
+    // ID ile diyet tipi getirme
+    public Optional<DietType> getDietTypeById(Long id) {
+        return dietTypeRepository.findById(id);
+    }
+
+    // Diyet tipi silme
+    public void deleteDietType(Long id) {
+        dietTypeRepository.deleteById(id);
     }
 }

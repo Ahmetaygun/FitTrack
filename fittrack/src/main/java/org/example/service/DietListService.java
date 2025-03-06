@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DietListService {
@@ -17,29 +18,52 @@ public class DietListService {
         this.dietListRepository = dietListRepository;
     }
 
-    // Danışanın ID'sine göre diyet listeleri almak
+    // Diyet listesi kaydetme
+    public void saveDietList(DietList dietList) {
+        dietListRepository.save(dietList);
+    }
+
+    // Tüm diyet listelerini getirme
+    public List<DietList> getAllDietLists() {
+        return dietListRepository.findAll();
+    }
+
+    // Diyet listesi güncelleme
+    public DietList updateDietList(Long dietListId, DietList dietListDetails) {
+        Optional<DietList> existingDietList = dietListRepository.findById(dietListId);
+        if (existingDietList.isPresent()) {
+            DietList updatedDietList = existingDietList.get();
+            updatedDietList.setDietType(dietListDetails.getDietType());
+            updatedDietList.setStartDate(dietListDetails.getStartDate());
+            updatedDietList.setEndDate(dietListDetails.getEndDate());
+            updatedDietList.setDescription(dietListDetails.getDescription());
+            return dietListRepository.save(updatedDietList);
+        }
+        return null;
+    }
+
+    // ID ile diyet listesi getirme
+    public Optional<DietList> getDietListById(Long id) {
+        return dietListRepository.findById(id);
+    }
+
+    // Danışan ID'sine göre diyet listelerini getirme
     public List<DietList> getDietListsByClientId(Long clientId) {
         return dietListRepository.findByClientId(clientId);
     }
 
-    // Diyet tipi ID'sine göre diyet listeleri almak
-    public List<DietList> getDietListsByDietTypeId(Long dietTypeId) {
-        return dietListRepository.findByDietTypeId(dietTypeId);
-    }
-
-    // Diyetisyen ID'sine göre diyet listeleri almak
+    // Diyetisyen ID'sine göre diyet listelerini getirme
     public List<DietList> getDietListsByDietitianId(Long dietitianId) {
         return dietListRepository.findByDietitianId(dietitianId);
     }
 
-    // Diyet listesi oluşturma
-    public DietList createDietList(DietList dietList) {
-        return dietListRepository.save(dietList);
+    // Diyet tipine göre diyet listeleri getirme
+    public List<DietList> getDietListsByDietType(String dietType) {
+        return dietListRepository.findByDietType(dietType);
     }
 
-    // Diyet listesi güncelleme
-    public DietList updateDietList(Long id, DietList updatedDietList) {
-        updatedDietList.setId(id);
-        return dietListRepository.save(updatedDietList);
+    // Diyet listesi silme
+    public void deleteDietList(Long id) {
+        dietListRepository.deleteById(id);
     }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "diet_lists")
@@ -21,7 +22,13 @@ public class DietList {
     @Column(nullable = false)
     private String name; // Diyetin adı
 
-    @Column(nullable = false)
+    @Column(name = "start_date", nullable = false)
+    private LocalDate startDate;
+
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate;
+
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description; // Diyet hakkında açıklama
 
     @ManyToOne(fetch = FetchType.LAZY)

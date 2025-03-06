@@ -1,17 +1,38 @@
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\controller\ClientController.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\controller\DietitianController.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\controller\DietListController.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\controller\DietTypeController.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\FittrackApplication.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\model\Client.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\model\Dietitian.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\model\DietList.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\model\DietType.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\repository\ClientRepository.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\repository\DietitianRepository.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\repository\DietListRepository.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\repository\DietTypeRepository.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\service\ClientService.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\service\DietitianService.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\service\DietListService.java
-C:\Users\Derya\IdeaProjects\fittrack\src\main\java\org\example\service\DietTypeService.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\repository\DietitianRepository.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\controller\AdminController.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\config\SecurityConfig.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\controller\ClientController.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\controller\DietitianController.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\DietListDAO.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\service\AnalizService.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\controller\AnalizController.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\config\WebSecurityConfig.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\AnalizDAO.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\model\DietList.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\impl\AnalizDAOImpl.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\GenericDAO.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\model\Admin.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\repository\ClientRepository.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\impl\DietitianDAOImpl.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\service\DietListService.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\com\fittrack\config\SecurityConfig.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\ClientDAO.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\repository\AnalizRepository.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\service\AdminService.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\service\DietTypeService.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\impl\DietListDAOImpl.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\controller\DietListController.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\model\Dietitian.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\repository\DietListRepository.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\impl\AdminDAOImpl.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\impl\ClientDAOImpl.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\model\Analiz.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\service\ClientService.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\service\DietitianService.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\AdminDAO.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\FittrackApplication.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\controller\DietTypeController.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\model\DietType.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\repository\DietTypeRepository.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\model\Client.java
+C:\Users\aygun\Desktop\Yeni klasör (5)\Fittrack\fittrack\src\main\java\org\example\dao\DietitianDAO.java

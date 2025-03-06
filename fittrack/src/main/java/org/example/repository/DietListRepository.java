@@ -16,4 +16,7 @@ public interface DietListRepository extends JpaRepository<DietList, Long> {
 
     // Diyetisyen ID'sine göre diyet listesi almak
     List<DietList> findByDietitianId(Long dietitianId);
+
+    // Diyet tipine göre diyet listesi almak
+    List<DietList> findByDietType(String dietType);
 }

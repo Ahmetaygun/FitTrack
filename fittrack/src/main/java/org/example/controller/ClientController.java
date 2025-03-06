@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/clients")
+@RequestMapping("/api/client")
 public class ClientController {
 
     private final ClientService clientService;
@@ -20,45 +20,53 @@ public class ClientController {
         this.clientService = clientService;
     }
 
+    // Yeni danışan oluşturma
+    @PostMapping
+    public ResponseEntity<Void> createClient(@RequestBody Client client) {
+        clientService.saveClient(client);
+        return ResponseEntity.ok().build();
+    }
+
+    // Danışan güncelleme
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateClient(@PathVariable Long id, @RequestBody Client clientDetails) {
+        clientService.updateClient(id, clientDetails);
+        return ResponseEntity.ok().build();
+    }
+
     // Tüm danışanları listeleme
-    @GetMapping("/")
-    public List<Client> getAllClients() {
-        return clientService.getAllClients();
+    @GetMapping
+    public ResponseEntity<List<Client>> getAllClients() {
+        List<Client> clients = clientService.getAllClients();
+        return ResponseEntity.ok(clients);
     }
 
-    // Danışan kaydetme
-    @PostMapping("/create")
-    public ResponseEntity<Client> createClient(@RequestBody Client client) {
-        Client savedClient = clientService.saveClient(client);
-        return ResponseEntity.ok(savedClient);
-    }
-
-    // Danışan bilgilerini güncelleme
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable Long id, @RequestBody Client clientDetails) {
-        Client updatedClient = clientService.updateClient(id, clientDetails);
-        if (updatedClient != null) {
-            return ResponseEntity.ok(updatedClient);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    // Danışan ID ile getirme
+    // ID ile danışan getirme
     @GetMapping("/{id}")
     public ResponseEntity<Client> getClientById(@PathVariable Long id) {
         Optional<Client> client = clientService.getClientById(id);
-        return client.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return client.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // E-posta ile danışan getirme
-    @GetMapping("/email/{email}")
-    public ResponseEntity<Client> getClientByEmail(@PathVariable String email) {
-        Client client = clientService.getClientByEmail(email);
-        if (client != null) {
-            return ResponseEntity.ok(client);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    // İsim ile danışan arama
+    @GetMapping("/search/name/{name}")
+    public ResponseEntity<List<Client>> findClientsByName(@PathVariable String name) {
+        List<Client> clients = clientService.findClientsByName(name);
+        return ResponseEntity.ok(clients);
+    }
+
+    // Diyetisyen ID'sine göre danışanları getirme
+    @GetMapping("/dietitian/{dietitianId}")
+    public ResponseEntity<List<Client>> findClientsByDietitian(@PathVariable Long dietitianId) {
+        List<Client> clients = clientService.findClientsByDietitian(dietitianId);
+        return ResponseEntity.ok(clients);
+    }
+
+    // Danışan silme
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
+        clientService.deleteClient(id);
+        return ResponseEntity.ok().build();
     }
 }

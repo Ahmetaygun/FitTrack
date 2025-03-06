@@ -14,11 +14,36 @@ public class DietType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name; // Diyet tipinin adı
 
-    @Column(nullable = true)
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description; // Diyet tipi hakkında açıklama (isteğe bağlı)
+
+    // Getter ve Setter metodları
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

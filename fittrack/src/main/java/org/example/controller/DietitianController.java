@@ -7,9 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/dietitians")
+@RequestMapping("/api/dietitian")
 public class DietitianController {
 
     private final DietitianService dietitianService;
@@ -19,28 +20,32 @@ public class DietitianController {
         this.dietitianService = dietitianService;
     }
 
-    // Diyetisyen Kaydı
-    @PostMapping("/register")
-    public ResponseEntity<Dietitian> registerDietitian(@RequestBody Dietitian dietitian) {
-        return ResponseEntity.ok(dietitianService.registerDietitian(dietitian));
+    // Yeni diyetisyen kaydı
+    @PostMapping
+    public ResponseEntity<Void> registerDietitian(@RequestBody Dietitian dietitian) {
+        dietitianService.registerDietitian(dietitian);
+        return ResponseEntity.ok().build();
     }
 
-    // Tüm Diyetisyenleri Getir
+    // Tüm diyetisyenleri listeleme
     @GetMapping
     public ResponseEntity<List<Dietitian>> getAllDietitians() {
-        return ResponseEntity.ok(dietitianService.getAllDietitians());
+        List<Dietitian> dietitians = dietitianService.getAllDietitians();
+        return ResponseEntity.ok(dietitians);
     }
 
-    // Belirli ID ile Diyetisyen Getir
+    // ID ile diyetisyen getirme
     @GetMapping("/{id}")
     public ResponseEntity<Dietitian> getDietitianById(@PathVariable Long id) {
-        return ResponseEntity.ok(dietitianService.getDietitianById(id));
+        Optional<Dietitian> dietitian = dietitianService.getDietitianById(id);
+        return dietitian.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Diyetisyen Silme
+    // Diyetisyen silme
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteDietitian(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteDietitian(@PathVariable Long id) {
         dietitianService.deleteDietitian(id);
-        return ResponseEntity.ok("Diyetisyen başarıyla silindi!");
+        return ResponseEntity.ok().build();
     }
 }

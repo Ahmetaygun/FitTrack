@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DietitianService {
@@ -18,8 +19,8 @@ public class DietitianService {
     }
 
     // Diyetisyen Kaydı
-    public Dietitian registerDietitian(Dietitian dietitian) {
-        return dietitianRepository.save(dietitian); // Şifreleme kaldırıldı
+    public void registerDietitian(Dietitian dietitian) {
+        dietitianRepository.save(dietitian);
     }
 
     // Tüm Diyetisyenleri Listeleme
@@ -28,9 +29,8 @@ public class DietitianService {
     }
 
     // ID'ye göre Diyetisyen Getirme
-    public Dietitian getDietitianById(Long id) {
-        return dietitianRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Diyetisyen bulunamadı!"));
+    public Optional<Dietitian> getDietitianById(Long id) {
+        return dietitianRepository.findById(id);
     }
 
     // Diyetisyen Silme
